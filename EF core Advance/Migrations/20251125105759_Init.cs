@@ -2,8 +2,6 @@
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace EF_core_Advance.Migrations
 {
     /// <inheritdoc />
@@ -45,20 +43,6 @@ namespace EF_core_Advance.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Roles",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Admin" },
-                    { 2, "Employee" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "Family", "Name", "RoleId" },
-                values: new object[] { 1, "Khakifirooz", "mehrshad", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",

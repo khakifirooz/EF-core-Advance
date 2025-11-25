@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF_core_Advance.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20251125103902_Init")]
+    [Migration("20251125105759_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -39,18 +39,6 @@ namespace EF_core_Advance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Employee"
-                        });
                 });
 
             modelBuilder.Entity("EF_core_Advance.Models.User", b =>
@@ -78,15 +66,6 @@ namespace EF_core_Advance.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Family = "Khakifirooz",
-                            Name = "mehrshad",
-                            RoleId = 1
-                        });
                 });
 
             modelBuilder.Entity("EF_core_Advance.Models.User", b =>

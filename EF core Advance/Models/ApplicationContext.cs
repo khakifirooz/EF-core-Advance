@@ -33,15 +33,15 @@ public class ApplicationContext : DbContext
             .Property(x => x.Name)
             .HasColumnType("nvarchar(100)");
 
-        // seed data:
-        modelBuilder.Entity<Role>()
-            .HasData(
-                new Role { Id = 1 ,Name = "Admin"},
-                new Role { Id = 2 , Name = "Employee"}
-            );
+        //// seed data:
+        //modelBuilder.Entity<Role>()
+        //    .HasData(
+        //        new Role { Id = 1 ,Name = "Admin"},
+        //        new Role { Id = 2 , Name = "Employee"}
+        //    );
 
-        modelBuilder.Entity<User>()
-            .HasData(new User { Id = 1, Name = "mehrshad", Family = "Khakifirooz", RoleId = 1 });
+        //modelBuilder.Entity<User>()
+        //    .HasData(new User { Id = 1, Name = "mehrshad", Family = "Khakifirooz", RoleId = 1 });
 
     }
 }

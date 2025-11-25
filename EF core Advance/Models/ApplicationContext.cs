@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
+using EF_core_Advance.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Client.Extensibility;
@@ -22,13 +23,6 @@ public class ApplicationContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>()
-            .Property(x =>  x.Name)
-            .HasColumnType("nvarchar(100)");
-
-        modelBuilder.Entity<User>()
-            .Property(x => x.Family)
-            .HasColumnType("nvarchar(100)");
 
         modelBuilder.Entity<Role>()
             .Property(x => x.Name)
@@ -45,8 +39,10 @@ public class ApplicationContext : DbContext
         //    .HasData(new User { Id = 1, Name = "mehrshad", Family = "Khakifirooz", RoleId = 1 });
 
 
-        modelBuilder.Entity<Order>()  // //Global Query Filter
-            .HasQueryFilter(x => x.IsDeleted == false);
+        modelBuilder.ApplyConfiguration(new OrderMapping());
+
+        modelBuilder.ApplyConfiguration(new UserMapping());
+
 
     }
 

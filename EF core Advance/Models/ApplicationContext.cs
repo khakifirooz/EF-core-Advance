@@ -1,14 +1,15 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Identity.Client.Extensibility;
 
 namespace EF_core_Advance.Models;
 
 public class ApplicationContext : DbContext
 {
-
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
+    public DbSet<Order> Orders { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -43,5 +44,10 @@ public class ApplicationContext : DbContext
         //modelBuilder.Entity<User>()
         //    .HasData(new User { Id = 1, Name = "mehrshad", Family = "Khakifirooz", RoleId = 1 });
 
+
+        modelBuilder.Entity<Order>()  // //Global Query Filter
+            .HasQueryFilter(x => x.IsDeleted == false);
+
     }
+
 }

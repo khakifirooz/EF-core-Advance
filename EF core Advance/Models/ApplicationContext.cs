@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.Marshalling;
+﻿using System.Reflection;
+using System.Runtime.InteropServices.Marshalling;
 using EF_core_Advance.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,9 +40,10 @@ public class ApplicationContext : DbContext
         //    .HasData(new User { Id = 1, Name = "mehrshad", Family = "Khakifirooz", RoleId = 1 });
 
 
-        modelBuilder.ApplyConfiguration(new OrderMapping());
+        //modelBuilder.ApplyConfiguration(new OrderMapping());
+        //modelBuilder.ApplyConfiguration(new UserMapping());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        modelBuilder.ApplyConfiguration(new UserMapping());
 
 
     }

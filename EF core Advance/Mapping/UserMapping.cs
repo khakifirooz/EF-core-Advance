@@ -9,9 +9,11 @@ public class UserMapping : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.Property(x => x.Name)
-            .HasColumnType("nvarchar(100)");
+            .HasColumnType("nvarchar(100)")
+            .HasColumnName("First_Name");
 
         builder.Property(x => x.Family)
-            .HasColumnType("nvarchar(100)");
+            .HasColumnType("nvarchar(100)")
+            .HasColumnName("Last_Name");
     }
 }
